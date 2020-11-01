@@ -6,4 +6,4 @@ namespace = Namespace('sample', description='Sample API to test Jenkins')
 class Message(Resource):
     @namespace.doc(description='Greetiings')
     def get(self):
-        return 'Hello Sundari!'
+        return 'Hello Budraan!'
