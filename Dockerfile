@@ -6,6 +6,7 @@ RUN apt-get install -y nginx gunicorn supervisor bash net-tools vim
 COPY . /flask_app
 WORKDIR /flask_app
 RUN mkdir -p /flask_app/var/log
+chmod +x run.sh
 COPY ./requirements.txt /var/www/requirements.txt
 RUN pip install -r /var/www/requirements.txt
 COPY ./flask_app.supervisor /etc/supervisor/conf.d/flask_app.conf

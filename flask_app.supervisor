@@ -2,7 +2,7 @@
 [program:flask_app]
 user = root
 directory = /flask_app
-command = /flask_app/run.sh gunicorn -c /app/config/gunicorn.conf.py wsgi
+command = /flask_app/run.sh gunicorn -c /flask_app/config/gunicorn.conf.py wsgi
 
 priority = 900
 autostart = true
