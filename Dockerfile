@@ -11,12 +11,12 @@ RUN pip install -r /var/www/requirements.txt
 COPY ./flask_app.supervisor /etc/supervisor/conf.d/flask_app.conf
 RUN supervisord -c /etc/supervisor/supervisord.conf
 CMD ["service", "supervisor", "start"]
-RUN supervisorctl reread
-RUN supervisorctl update
-RUN supervisorctl avail 
-RUN supervisorctl restart flask_app
+RUN sudo supervisorctl reread
+RUN sudo supervisorctl update
+RUN sudo supervisorctl avail 
+RUN sudo supervisorctl restart flask_app
 EXPOSE 80
 COPY ./flask_app.nginx /etc/nginx/sites-available/flask_app
 RUN ln -s /etc/nginx/sites-available/flask_app /etc/nginx/sites-enabled/flask_app
-RUN nginx -t
+RUN sudo nginx -t
 CMD ["service", "nginx", "restart"]
