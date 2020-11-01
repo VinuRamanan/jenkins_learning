@@ -14,10 +14,6 @@ COPY ./flask_app.supervisor /etc/supervisor/conf.d/flask_app.conf
 RUN supervisord -c /etc/supervisor/supervisord.conf
 CMD ["service", "supervisor", "start"] 
 RUN supervisorctl restart flask_app
-RUN supervisorctl reread
-RUN supervisorctl update
-RUN supervisorctl avail flask_app
-RUN supervisorctl restart flask_app
 COPY ./flask_app.nginx /etc/nginx/sites-available/flask_app
 RUN ln -s /etc/nginx/sites-available/flask_app /etc/nginx/sites-enabled/flask_app
 RUN nginx -t
