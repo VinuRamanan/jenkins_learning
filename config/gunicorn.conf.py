@@ -15,7 +15,7 @@ accesslog = os.path.join(_VAR, 'log/api-access.log')
 
 #bind = 'unix:%s' % os.path.join(_VAR, 'run/gunicorn.sock')
 #bind = '0.0.0.0:5000'
-bind = '0.0.0.0:5000'
+bind = '127.0.0.1:5000'
 #workers = 3
 workers = multiprocessing.cpu_count() * 2 + 1
 
