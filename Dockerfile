@@ -15,5 +15,5 @@ RUN supervisorctl restart flask_app
 EXPOSE 80
 COPY ./flask_app.nginx /etc/nginx/sites-available/flask_app
 RUN ln -s /etc/nginx/sites-available/flask_app /etc/nginx/sites-enabled/flask_app
-RUN sudo nginx -t
+RUN nginx -t
 CMD ["service", "nginx", "restart"]
