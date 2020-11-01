@@ -1,8 +1,8 @@
 ;/etc/supervisor/conf.d/flask_app.conf
 [program:flask_app]
 user = root
-directory = /app
-command = /app/run.sh gunicorn -c /app/config/gunicorn.conf.py wsgi
+directory = /flask_app
+command = /flask_app/run.sh gunicorn -c /app/config/gunicorn.conf.py wsgi
 
 priority = 900
 autostart = true
@@ -11,5 +11,5 @@ stopsignal = TERM
 
 
 redirect_stderr = true
-stdout_logfile = /app/flask_app/var/log/%(program_name)s.log
-stderr_logfile = /app/flask_app/var/log/%(program_name)s.log
+stdout_logfile = /flask_app/var/log/%(program_name)s.log
+stderr_logfile = /flask_app/var/log/%(program_name)s.log

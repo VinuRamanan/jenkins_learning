@@ -4,9 +4,9 @@ RUN apt-get update -qq \
     && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 gnupg-agent software-properties-common 
 RUN apt-get install -y nginx gunicorn supervisor
 EXPOSE 80
-COPY . /app
-WORKDIR /app
-RUN mkdir -p /app/var/log
+COPY . /flask_app
+WORKDIR /flask_app
+RUN mkdir -p /flask_app/var/log
 COPY ./requirements.txt /var/www/requirements.txt
 RUN pip install -r /var/www/requirements.txt
 COPY ./flask_app.supervisor /etc/supervisor/conf.d/flask_app.conf
