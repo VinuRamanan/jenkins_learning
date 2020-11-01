@@ -1,0 +1,11 @@
+server {
+    listen 80;
+    server_name localhost;
+
+location / {
+  include proxy_params;
+  proxy_pass "0.0.0.0:5000";
+    }
+  error_log  /var/log/nginx/api-error.log;
+  access_log /var/log/nginx/api-access.log;
+}
