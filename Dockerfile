@@ -2,7 +2,7 @@ FROM python:3.7-buster
 USER root
 RUN apt-get update -qq \
     && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 gnupg-agent software-properties-common 
-RUN apt-get install -y nginx gunicorn supervisor bash net-tools
+RUN apt-get install -y nginx gunicorn supervisor bash net-tools vim
 COPY . /flask_app
 WORKDIR /flask_app
 RUN mkdir -p /flask_app/var/log
