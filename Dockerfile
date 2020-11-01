@@ -8,7 +8,7 @@ COPY . /app
 WORKDIR /app
 COPY ./requirements.txt /var/www/requirements.txt
 RUN pip install -r /var/www/requirements.txt
-COPY ./flask_app.supervisor /etc/supervisor/conf.d/flask_app
+COPY ./flask_app.supervisor /etc/supervisor/conf.d/flask_app.conf
 RUN supervisord -c /etc/supervisor/supervisord.conf
 RUN supervisorctl reread
 RUN supervisorctl update
