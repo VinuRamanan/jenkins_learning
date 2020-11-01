@@ -2,7 +2,7 @@ FROM python:3.7-buster
 USER root
 RUN apt-get update -qq \
     && apt-get install -qqy apt-transport-https ca-certificates curl gnupg2 gnupg-agent software-properties-common 
-RUN apt-get install -y nginx gunicorn supervisor
+RUN apt-get install -y nginx gunicorn supervisor bash
 COPY . /flask_app
 WORKDIR /flask_app
 RUN mkdir -p /flask_app/var/log
@@ -10,7 +10,7 @@ COPY ./requirements.txt /var/www/requirements.txt
 RUN pip install -r /var/www/requirements.txt
 COPY ./flask_app.supervisor /etc/supervisor/conf.d/flask_app.conf
 RUN supervisord -c /etc/supervisor/supervisord.conf
-CMD ["service", "supervisor", "start"]
+CMD ["service", "supervisor", "start"] 
 RUN supervisorctl restart flask_app
 EXPOSE 80
 COPY ./flask_app.nginx /etc/nginx/sites-available/flask_app
