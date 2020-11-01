@@ -6,5 +6,3 @@ supervisorctl reread
 supervisorctl update
 supervisorctl avail
 supervisorctl restart flask_app
-
-nginx -t
