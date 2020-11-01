@@ -17,7 +17,8 @@ CMD ["service", "supervisor", "start"]
 COPY ./flask_app.nginx /etc/nginx/sites-available/flask_app
 RUN ln -s /etc/nginx/sites-available/flask_app /etc/nginx/sites-enabled/flask_app
 RUN nginx -t
-CMD ["service", "nginx", "restart"]
+CMD ["service", "nginx", "stop"]
 RUN ./gunicorn_run.sh
 RUN nginx -t
+CMD ["service", "nginx", "start"]
 CMD ["nginx", "-g", "daemon off;"]
